@@ -3,14 +3,16 @@ import NavBar from './components/NavBar/NavBar';
 import { Layout } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
 import Content from './components/Content/Content'
+import { useState } from 'react';
 
 function App() {
+    const [collapsed, setCollapsed] = useState(false);
     return (
         <Router>
             <Layout style={{ minHeight: '100vh' }}>
-                <NavBar />
+                <NavBar collapsed={collapsed} setCollapsed={setCollapsed} />
                 <Layout>
-                    <Content />
+                    <Content collapsed={collapsed} setCollapsed={setCollapsed} />
                     <Footer style={{ textAlign: 'center' }}>Created by DoctorDolphin</Footer>
                 </Layout>
             </Layout>

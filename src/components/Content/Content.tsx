@@ -37,7 +37,12 @@ const initialData: Task[] = [
     // Add more data entries as needed
 ];
 
-const Content: React.FC = () => {
+interface ContentProps {
+    collapsed: boolean;
+    setCollapsed: (collapsed: boolean) => void;
+}
+
+const Content: React.FC<ContentProps> = ({collapsed, setCollapsed}) => {
     const [data, setData] = useState<Task[]>(initialData);
     const [selectedTask, setSelectedTask] = useState<Task | null>(null);
 
@@ -59,10 +64,10 @@ const Content: React.FC = () => {
     }
 
     return (
-        <Layout>
+        <Layout style={{ margin: '24px 16px 0', overflow: 'initial' }}>
             <Routes>
-                <Route path="/" element={<MainContentHeader title='Home' />} />
-                <Route path="/about" element={<MainContentHeader title='About' />} />
+                <Route path="/" element={<MainContentHeader title='Home' collapsed={collapsed} setCollapsed={setCollapsed} />} />
+                <Route path="/about" element={<MainContentHeader title='About' collapsed={collapsed} setCollapsed={setCollapsed} />} />
             </Routes>
             <Layout>
                 <Row>

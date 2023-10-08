@@ -9,6 +9,11 @@ import {
 
 const { Sider } = Layout;
 
+interface NavBarProps {
+  collapsed: boolean;
+  setCollapsed: (collapsed: boolean) => void;
+}
+
 type MenuItem = {
   key: string;
   label: React.ReactNode;
@@ -16,17 +21,27 @@ type MenuItem = {
   children?: MenuItem[];
 };
 
-const NavBar: React.FC = () => {
-  const [collapsed, setCollapsed] = useState(false);
+const NavBar: React.FC<NavBarProps> = ({collapsed, setCollapsed}) => {
   const items: MenuItem[] = [
     { key: '1', label: <Link to="/">Home</Link>, icon: <HomeOutlined /> },
     { key: '9', label: <Link to="/about">About</Link>, icon: <InfoCircleOutlined /> }
   ];
 
   return (
-    <Sider collapsible collapsed={collapsed} onCollapse={setCollapsed}>
+    <Sider
+      collapsible
+      breakpoint="lg"
+      onBreakpoint={(broken) => setCollapsed(broken)}
+      collapsedWidth="0"
+      trigger={null}
+      collapsed={collapsed}
+    >
       <div className="demo-logo-vertical" />
-      <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
+      <Menu 
+        theme="dark" 
+        defaultSelectedKeys={['1']} 
+        mode="inline"
+      >
         {items.map(item => (
           <Menu.Item key={item.key} icon={item.icon}>
             {item.label}
