@@ -119,3 +119,4 @@ obj/
 *.rar
 *.tar.gz
 *.tar
+*.code-workspace
