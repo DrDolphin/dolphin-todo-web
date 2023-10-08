@@ -1,6 +1,7 @@
 import { List } from 'antd';
 import TaskDisplay from '../TaskDisplay/TaskDisplay';
 import { Task } from '../../models/Task';
+import { Content } from 'antd/es/layout/layout';
 
 interface TaskListDisplayProps {
     data: Task[],
@@ -12,20 +13,30 @@ interface TaskListDisplayProps {
 const TaskListDisplay: React.FC<TaskListDisplayProps> = ({data, onStatusChange, selectedTask, setSelectedTask}) => {
 
     return (
-        <List 
-            bordered 
-            dataSource={data}
-            renderItem={(item) => (
-                <List.Item
-                onClick={() => {
-                    setSelectedTask(item);
+        <Content style={{ height: '100%' }}>
+            <div
+                id='scrollableDiv'
+                style={{
+                    height: '100%',
+                    overflow: 'auto',
                 }}
-                    style={selectedTask?.Id === item.Id ? { backgroundColor: '#a3c6ff' } : {}}
-                    >
-                    <TaskDisplay task={item} onStatusChange={onStatusChange} />
-                </List.Item>
-            )}
-        />
+            >
+                <List 
+                    bordered 
+                    dataSource={data}
+                    renderItem={(item) => (
+                        <List.Item
+                            onClick={() => {
+                                setSelectedTask(item);
+                            }}
+                            style={selectedTask?.Id === item.Id ? { backgroundColor: '#a3c6ff' } : {}}
+                        >
+                            <TaskDisplay task={item} onStatusChange={onStatusChange} />
+                        </List.Item>
+                    )}
+                />
+            </div>
+        </Content>
     )
 };
 

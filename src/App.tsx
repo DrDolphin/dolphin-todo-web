@@ -2,7 +2,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import NavBar from './components/NavBar/NavBar';
 import { Layout } from 'antd';
 import { Footer } from 'antd/es/layout/layout';
-import Content from './components/Content/Content'
+import Content from './components/MainContent/MainContent'
 import { useState } from 'react';
 
 function App() {

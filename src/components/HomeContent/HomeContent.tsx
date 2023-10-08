@@ -9,12 +9,10 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({task}) => {
     return (
-        <Layout>
-            <Content style={{ margin: '0 16px' }}>
-                <p>Home Page of {task?.Title}</p>
-                <p>{task?.Title} is {task?.Status ? 'True' : 'False'}</p>
-            </Content>
-        </Layout>
+        <>
+            <p>Home Page of {task?.Title}</p>
+            <p>{task?.Title} is {task?.Status ? 'True' : 'False'}</p>
+        </>
     );
 }
 
