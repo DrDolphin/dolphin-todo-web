@@ -1,0 +1,8 @@
+.ant-checkbox-wrapper {
+    pointer-events: none; /* Make the entire wrapper non-clickable */
+}
+
+.ant-checkbox-input,
+.ant-checkbox-inner {
+    pointer-events: auto; /* Allow pointer events (like clicking) only for these elements */
+}
