@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Task } from '../../models/Task';
-import { theme } from 'antd';
 
 const initialData: Task[] = [
     {
@@ -54,16 +53,11 @@ export const MainContentController = () => {
         setSelectedTask(updatedSelectedTask || null);
     }
 
-    const showSomePopup = () => {
-        console.log('This does something eventually maybe?');
-    }
-
     return {
         data,
         setData,
         selectedTask,
         setSelectedTask,
-        handleStatusChange,
-        showSomePopup
+        handleStatusChange
     }
 }

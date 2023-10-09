@@ -4,7 +4,7 @@ import { Task } from '../../models/Task';
 import { Content } from 'antd/es/layout/layout';
 
 interface TaskListDisplayProps {
-    data: Task[],
+    data: Task[];
     onStatusChange: (task: number, newStatus: boolean) => void;
     selectedTask: Task | null;
     setSelectedTask: (task: Task | null) => void;
@@ -29,7 +29,9 @@ const TaskListDisplay: React.FC<TaskListDisplayProps> = ({data, onStatusChange, 
                             onClick={() => {
                                 setSelectedTask(item);
                             }}
-                            style={selectedTask?.Id === item.Id ? { backgroundColor: '#a3c6ff' } : {}}
+                            style={{
+                                padding:'0 0 6px 0'
+                            }}
                         >
                             <TaskDisplay task={item} onStatusChange={onStatusChange} />
                         </List.Item>

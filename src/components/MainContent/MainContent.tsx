@@ -6,6 +6,7 @@ import HomeContent from '../HomeContent/HomeContent';
 import MainContentHeader from '../MainContentHeader/MainContentHeader';
 import TaskListDisplay from '../TaskListDisplay/TaskListDisplay';
 import { MainContentController } from './MainContentController';
+import NewTask from '../NewTask/NewTask';
 
 interface MainContentProps {
     collapsed: boolean;
@@ -15,10 +16,10 @@ interface MainContentProps {
 const MainContent: React.FC<MainContentProps> = ({collapsed, setCollapsed}) => {
     const {
         data,
+        setData,
         selectedTask,
         setSelectedTask,
-        handleStatusChange,
-        showSomePopup
+        handleStatusChange
     } = MainContentController(); 
 
     const {
@@ -33,7 +34,7 @@ const MainContent: React.FC<MainContentProps> = ({collapsed, setCollapsed}) => {
             </Routes>
             <Content style={{ margin: '12px 8px 0' }} >
                 <Row gutter={[16, 16]} style={{ height: '100%' }}>
-                    <Col span={5}>
+                    <Col span={6}>
                         <div 
                             style={{ 
                                 display: 'flex',
@@ -50,10 +51,10 @@ const MainContent: React.FC<MainContentProps> = ({collapsed, setCollapsed}) => {
                                 selectedTask={selectedTask} 
                                 setSelectedTask={setSelectedTask} 
                             />
-                            <Button type="primary">New Task</Button>
+                            <NewTask data={data} setData={setData} />
                         </div>
                     </Col>
-                    <Col span={19}>
+                    <Col span={18}>
                         <div 
                             style={{ 
                                 padding: 12, 
